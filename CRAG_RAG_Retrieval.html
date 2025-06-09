@@ -10,14 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Vibrant color palette */
-            --teal: #00B8A9;
-            --orange: #F8A488;
-            --purple: #6A5ACD;
-            --yellow: #FFDE7D;
-            --coral: #FF6B6B;
-            --blue: #4D80E4;
-            --green: #2EC4B6;
+            /* Pastel Yellow Option */
+            --yellow: #FDFD96;
+            --yellow-dark: #F0F080;
+            --light-brown: #D2B48C;
+            --dark-brown: #8B4513;
+            --light-brown-dark: #CD853F;
+            --dark-brown-dark: #654321;
             --light: #FFFFFF;
             --dark: #1A1A2E;
             --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -119,7 +118,7 @@
             display: inline-block;
             margin-top: 1rem;
             padding: 0.8rem 1.5rem;
-            background-color: var(--yellow);
+            background-color: #FFD700;
             color: var(--dark);
             text-decoration: none;
             border-radius: 50px;
@@ -129,7 +128,7 @@
         }
         
         .survey-button:hover {
-            background-color: #FFE066;
+            background-color: #FFC107;
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
@@ -143,29 +142,37 @@
         }
 
         .centralized-bg {
-            background: linear-gradient(45deg, var(--teal), var(--green));
+            background: linear-gradient(45deg, var(--yellow), var(--yellow-dark));
         }
 
         .retrieval-bg {
-            background: linear-gradient(45deg, var(--coral), var(--orange));
+            background: linear-gradient(45deg, var(--dark-brown), var(--dark-brown-dark));
         }
 
         .federated-bg {
-            background: linear-gradient(45deg, var(--blue), var(--purple));
+            background: linear-gradient(45deg, var(--light-brown), var(--light-brown-dark));
         }
 
         .card-icon {
             font-size: 3rem;
-            color: var(--light);
+            color: var(--dark);
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .retrieval-icon {
+            color: var(--light);
+        }
+
+        .federated-icon {
+            color: var(--light);
         }
 
         .card-badge {
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background-color: var(--yellow);
-            color: var(--dark);
+            background-color: var(--dark-brown);
+            color: var(--light);
             width: 30px;
             height: 30px;
             border-radius: 50%;
@@ -177,8 +184,8 @@
         }
         
         .federated-badge {
-            background-color: var(--coral);
-            color: var(--light);
+            background-color: var(--yellow);
+            color: var(--dark);
         }
 
         .card-content {
@@ -221,27 +228,29 @@
         }
 
         .centralized-btn {
-            background-color: var(--teal);
+            background-color: var(--yellow);
+            color: var(--dark);
         }
 
         .centralized-btn:hover {
-            background-color: var(--green);
+            background-color: var(--yellow-dark);
         }
 
         .retrieval-btn {
-            background-color: var(--coral);
+            background-color: var(--dark-brown);
         }
 
         .retrieval-btn:hover {
-            background-color: var(--orange);
+            background-color: var(--dark-brown-dark);
         }
 
         .federated-btn {
-            background-color: var(--blue);
+            background-color: var(--light-brown);
+            color: var(--dark);
         }
 
         .federated-btn:hover {
-            background-color: var(--purple);
+            background-color: var(--light-brown-dark);
         }
 
         .info-section {
@@ -297,7 +306,7 @@
             content: "•";
             position: absolute;
             left: 0;
-            color: var(--coral);
+            color: var(--dark-brown);
             font-weight: bold;
         }
 
@@ -339,7 +348,7 @@
                     <a href="https://docs.google.com/forms/d/1BQ6qsJs-QSGmn0Flw8fEOjc3KFCzpMUZJqFGeZNiJVc/viewform?pli=1&pli=1&edit_requested=true" target="_blank" class="survey-button">
                         Take the Survey <i class="fas fa-external-link-alt"></i>
                     </a>
-                    <a href="https://github.com/hennypurwadi/Centralized_RAG_Federated_RAG_RetrievalExtraction" target="_blank" class="survey-button" style="background-color: var(--teal); margin-left: 1rem;">
+                    <a href="https://centralizedragfederatedragretrievalextraction-muzd7d9dyusdfdx8.streamlit.app/" target="_blank" class="survey-button" style="background-color: var(--light-brown); margin-left: 1rem;">
                         View Code <i class="fab fa-github"></i>
                     </a>
                 </div>
@@ -358,7 +367,7 @@
                     <h3 class="card-title">Centralized RAG</h3>
                     <p class="card-subtitle">Retrieval-Augmented Generation</p>
                     <p class="card-description">
-                        Uses centralized approach to retrieve MSc AI program information and generates natural responses with advanced AI. Does it reduce hallucinations compared to models without retrieval augmentation?
+                        Uses centralized approach to retrieve MSc AI program information and generates natural responses with advanced AI. Does it responses more coherent compared to Retrieval-Base Chatbot?
                     </p>
                     <a href="https://centralizedragfederatedragretrievalextraction-muzd7d9dyusdfdx8.streamlit.app/" target="_blank" class="card-button centralized-btn">
                         Try Centralized RAG <i class="fas fa-external-link-alt"></i>
@@ -368,7 +377,7 @@
 
             <div class="chatbot-card">
                 <div class="card-image federated-bg">
-                    <i class="fas fa-network-wired card-icon"></i>
+                    <i class="fas fa-network-wired card-icon federated-icon"></i>
                     <div class="card-badge federated-badge">2</div>
                 </div>
                 <div class="card-content">
@@ -385,7 +394,7 @@
 
             <div class="chatbot-card">
                 <div class="card-image retrieval-bg">
-                    <i class="fas fa-search card-icon"></i>
+                    <i class="fas fa-search card-icon retrieval-icon"></i>
                     <div class="card-badge">3</div>
                 </div>
                 <div class="card-content">
@@ -430,3 +439,4 @@
     </footer>
 </body>
 </html>
+
