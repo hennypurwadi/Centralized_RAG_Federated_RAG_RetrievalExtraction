@@ -9,7 +9,6 @@ from urllib.parse import urljoin, urlparse
 import time
 import json
 from typing import List, Dict, Any
-
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
@@ -114,7 +113,7 @@ else:
     st.warning("Please enter your OpenAI API key to continue.")
     st.stop()
 
-# Helper functions for document processing
+# Helper document processing
 def clean_html(raw_html: str) -> str:
     soup = BeautifulSoup(raw_html, "html.parser")
     for tag in soup(["script", "style", "nav", "footer", "header"]):
@@ -176,10 +175,9 @@ def get_federated_docs(urls, max_depth=1):
         all_docs.extend(docs)
     return all_docs
 
-# TRUE FEDERATED RAG CLASSES
+# TRUE FEDERATED RAG 
 class FederatedNode:
-    """Represents an independent federated node (university) with its own private data and retrieval system"""
-
+    #Represents an independent federated node (university) with its own private data and retrieval system
     def __init__(self, name: str, urls: List[str], embeddings_model: str = "text-embedding-3-small"):
         self.name = name
         self.urls = urls
@@ -221,11 +219,10 @@ class FederatedNode:
                 "node": self.name,
                 "rank": i + 1
             })
-
         return results
 
 class FederationCoordinator:
-    """Coordinates federated queries across multiple independent nodes"""
+    #Coordinates federated queries among multiple independent nodes
 
     def __init__(self, nodes: List[FederatedNode], llm_model: str = "gpt-4o", temperature: float = 0.3):
         self.nodes = nodes
@@ -243,7 +240,7 @@ class FederationCoordinator:
             node_responses[node.name] = node_results
             all_results.extend(node_results)
 
-        # Aggregate and rank results (this is where federation happens)
+        # Aggregate & rank results where federation happens
         aggregated_context = self._aggregate_results(all_results)
 
         # Generate response using aggregated context
@@ -251,7 +248,6 @@ class FederationCoordinator:
 
 Federated Results:
 {aggregated_context}
-
 Requirements:
 - Keep response under {max_response_length} words
 - Focus on key facts only
@@ -286,15 +282,15 @@ if 'federated_initialized' not in st.session_state:
 def main():
     # Header
     st.markdown("<h1 class='main-header'>True Federated RAG Chatbot</h1>", unsafe_allow_html=True)
-    st.markdown("<h3 style='text-align: center; color: #003366;'>MSc Artificial Intelligence online at University of Hull</h3>", unsafe_allow_html=True)    
+    st.markdown("<h3 style='text-align: center; color: #003366;'>MSc Artificial Intelligence online at University of Hull &</h3>", unsafe_allow_html=True)    
     st.markdown("<h3 style='text-align: center; color: #006633;'>MSc Computer Science with Artificial Intelligence online at Keele University</h3>", unsafe_allow_html=True)    
     st.markdown("<p style='text-align: center; color: #999; font-size: 18px;'>Independent University Nodes with Complete Data Privacy</p>", unsafe_allow_html=True)
 
     # Information about true federation
     st.markdown("""
     <div style='background-color: #FFF3E0; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #FF9800; margin: 1rem 0;'>
-        <strong>True Federated Architecture:</strong> Each university maintains its own private data and retrieval system.
-        Only final results are shared - no raw data or direct access to other nodes' vector stores.
+        <strong>True Federated Architecture where</strong> Each university maintains its own private data & retrieval system.
+        Only final results are shared, no raw data or direct access to other nodes' vector stores.
     </div>
     """, unsafe_allow_html=True)
 
