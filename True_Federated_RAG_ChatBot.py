@@ -289,7 +289,7 @@ def main():
     # Information about true federation
     st.markdown("""
     <div style='background-color: #FFF3E0; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #FF9800; margin: 1rem 0;'>
-        <strong>True Federated Architecture where</strong> Each university maintains its own private data & retrieval system.
+        <strong>Each university maintains its own private data & retrieval system </strong>
         Only final results are shared, no raw data or direct access to other nodes' vector stores.
     </div>
     """, unsafe_allow_html=True)
