@@ -286,11 +286,9 @@ if 'federated_initialized' not in st.session_state:
 def main():
     # Header
     st.markdown("<h1 class='main-header'>True Federated RAG Chatbot</h1>", unsafe_allow_html=True)
-    st.markdown("<h3 style='text-align: center; color: #666;'>MSc Artificial Intelligence online at University of Hull & </h3>", unsafe_allow_html=True)
-    st.markdown("<h3 style='text-align: center; color: #666;'>MSc Computer Science with Artificial Intelligence online at Keele University</h3>", unsafe_allow_html=True)
-    st.markdown("<h3 style='text-align: center; color: #666;'>Independent University Nodes with Complete Data Privacy</h3>", unsafe_allow_html=True)
-    
-
+    st.markdown("<h3 style='text-align: center; color: #003366;'>MSc Artificial Intelligence online at University of Hull</h3>", unsafe_allow_html=True)    
+    st.markdown("<h3 style='text-align: center; color: #006633;'>MSc Computer Science with Artificial Intelligence online at Keele University</h3>", unsafe_allow_html=True)    
+    st.markdown("<p style='text-align: center; color: #999; font-size: 16px;'>Independent University Nodes with Complete Data Privacy</p>", unsafe_allow_html=True)
 
     # Information about true federation
     st.markdown("""
