@@ -13,6 +13,4 @@
 
 ## After interacting with the Chatbots, please rate the following **SURVEY**:
 
-https://docs.google.com/forms/d/1BQ6qsJs-QSGmn0Flw8fEOjc3KFCzpMUZJqFGeZNiJVc/viewform?pli=1&pli=1&edit_requested=true
-
 
