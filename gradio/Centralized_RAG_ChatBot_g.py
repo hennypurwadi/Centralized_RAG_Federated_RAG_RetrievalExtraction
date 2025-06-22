@@ -231,10 +231,10 @@ def initialize_rag_system(api_key: str, embeddings_model: str, llm_model: str,
         initialized = True
         progress(1.0, desc="Complete!")
         
-        return (f"✅ RAG System initialized successfully!\n\n"
-                f"📄 Processed {len(split_docs)} document chunks\n"
-                f"🤖 Using {llm_model} with {embeddings_model}\n"
-                f"🔍 Retrieving top {k_docs} relevant documents"), "", ""
+        return (f"RAG System initialized successfully!\n\n"
+                f"Processed {len(split_docs)} document chunks\n"
+                f"Using {llm_model} with {embeddings_model}\n"
+                f"Retrieving top {k_docs} relevant documents"), "", ""
         
     except Exception as e:
         return f"❌ Error initializing RAG system: {str(e)}", "", ""
@@ -320,7 +320,7 @@ with gr.Blocks(css=custom_css, title="Centralized RAG Chatbot", theme=gr.themes.
     # Header section
     gr.HTML("""
         <div class="main-header">
-            <h1 class="main-title">🤖 Centralized RAG Chatbot</h1>
+            <h1 class="main-title">Centralized RAG Chatbot</h1>
             <p class="sub-title">RETRIEVAL-AUGMENTED GENERATION</p>
             <p style="font-size: 1rem; opacity: 0.8;">Uses centralized approach to retrieve MSc AI program information and generates natural responses with advanced AI</p>
         </div>
@@ -348,7 +348,7 @@ with gr.Blocks(css=custom_css, title="Centralized RAG Chatbot", theme=gr.themes.
             )
             
             # Model Settings
-            with gr.Accordion("🤖 Model Settings", open=False):
+            with gr.Accordion("Model Settings", open=False):
                 embeddings_model = gr.Dropdown(
                     choices=["text-embedding-3-small", "text-embedding-3-large"],
                     value="text-embedding-3-small",
@@ -472,8 +472,8 @@ with gr.Blocks(css=custom_css, title="Centralized RAG Chatbot", theme=gr.themes.
     # Footer
     gr.HTML("""
         <div class="footer-info">
-            <p>🎓 <strong>About:</strong> MSc Artificial Intelligence Online Program - University of Hull</p>
-            <p>🤖 <strong>Powered by:</strong> OpenAI GPT & LangChain RAG Technology</p>
+            <p><strong>About:</strong> MSc Artificial Intelligence Online Program - University of Hull</p>
+            <p><strong>Powered by:</strong> OpenAI GPT & LangChain RAG Technology</p>
         </div>
     """)
     
