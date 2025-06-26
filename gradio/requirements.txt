@@ -1,5 +1,0 @@
-streamlit
-gradio
-sentence-transformers
-torch
-numpy
