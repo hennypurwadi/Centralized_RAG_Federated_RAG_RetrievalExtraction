@@ -13,8 +13,7 @@
 
 ## After interacting with the Chatbots, please rate the following **SURVEY**:
 
-
-
-[SURVEY](CRAG_FRAG_Retrieval.html)
+## 4. Click below to complete the SURVEY.
+[![SURVEY](https://img.shields.io/badge/Complete_the-SURVEY-blue?style=for-the-badge)](https://docs.google.com/forms/d/e/1FAIpQLSc3OIOBZNBA6rjFdIpwfR1wVdSRYe-Gaz7hoqSot5oykdBI2w/viewform)
 
 
