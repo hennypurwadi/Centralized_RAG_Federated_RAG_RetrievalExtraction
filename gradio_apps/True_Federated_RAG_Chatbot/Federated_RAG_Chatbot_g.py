@@ -12,7 +12,7 @@ from langchain.docstore.document import Document
 
 # Global variables to store the federated RAG system components
 federated_nodes = {}
-initialized = False
+initialized = True
 chat_history = []
 
 # Custom CSS for bluish theme with federated styling
