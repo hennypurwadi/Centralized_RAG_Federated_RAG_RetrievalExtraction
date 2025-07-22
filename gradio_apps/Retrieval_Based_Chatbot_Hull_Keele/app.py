@@ -244,7 +244,7 @@ with gr.Blocks(css=custom_css, title="Retrieval-Based Chatbot", theme=gr.themes.
     with gr.Group(elem_classes=["input-section"]):
         question_input = gr.Textbox(
             label="Enter your question:",
-            placeholder="e.g., What are the admission requirements for the MSc AI program at Hull?",
+            placeholder="e.g., How long does the MSc Artificial Intelligence course at the University of Hull take to complete?",
             lines=2,
             show_label=True
         )
