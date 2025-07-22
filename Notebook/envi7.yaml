@@ -1,0 +1,37 @@
+name: retrieval_emb_env
+channels:
+  - pytorch          # torch + torchvision binaries
+  - conda-forge
+  - defaults
+dependencies:
+  # ── core ─────────────────────────────────────────────────────────
+  - python=3.10
+  - jupyterlab
+  - ipykernel
+
+  # ── data & plotting ──────────────────────────────────────────────
+  - numpy=1.26.4
+  - pandas=2.2.2
+  - matplotlib=3.8.4
+  - seaborn=0.13.2
+  - scikit-learn=1.5.0
+
+  # ── deep‑learning stack ──────────────────────────────────────────
+  - cpuonly                      # swap for pytorch-cuda=12.1 + channel nvidia for GPU
+  - pytorch=2.2.1
+  - torchvision=0.17.1
+  - faiss-cpu=1.9.0
+
+  # ── networking / utilities ──────────────────────────────────────
+  - requests=2.31.0
+  - python-dotenv=1.0.1
+
+  # ── pip-only packages ────────────────────────────────────────────
+  - pip
+  - pip:
+      - transformers==4.49.0
+      - sentence-transformers==2.7.0
+      - langchain==0.2.1
+      - langchain-openai==0.1.7
+      - langchain-community==0.2.1
+      - ollama==0.5.1
