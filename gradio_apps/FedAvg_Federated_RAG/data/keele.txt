@@ -1,0 +1,51 @@
+=== Keele Online – MSc Computer Science with Artificial Intelligence ===
+
+1. Overview
+- Mode & Duration: 100 % online, part-time over 2 years (180 credits)
+- Start Dates: Six intakes per year (next intake: 2 September 2025; application deadline: 19 August 2025; documents by 26 August 2025)
+- Fees: Total £7,440; per 15‑credit module £620; final dissertation instalment £1,860; 10 % Keele alumni discount (£6,696)
+- Payment Options: Per‑module or upfront; UK/EU students may apply for government postgraduate loans; fees reviewed annually
+
+2. Entry Requirements
+- Academic:
+  • A 2:2 UK undergraduate degree (or international equivalent), OR
+  • Third‑class honours / ordinary degree plus ≥2 years relevant work experience, OR
+  • Non‑degree applicants: ≥3 years relevant computing/IT/data management experience
+- English: If English isn’t first language, need one of:
+  • IELTS 6.0 (min 5.5 each), TOEFL 79, PTE 50, Cambridge 169 (min 162 each), Duolingo 95 (min 85 each), OR
+  • Degree taught in English within the last 5 years
+
+3. Technical Requirements
+- Desktop/laptop (Windows/Mac/Linux) with admin rights
+- Microsoft Office (Word, Excel) and PDF reader
+- Platform: Canvas LMS‑compatible browser
+- Additional software per module:
+  • Anaconda (programming)
+  • XAMPP (web technologies)
+  • WEKA (data analytics)
+
+4. Curriculum & Modules
+- Core Modules:
+  • Applications of AI & Machine Learning
+  • Mathematics for AI & Data Science
+  • Statistical Data Analytics & Databases
+  • Design & Programming (algorithms, data structures, OOP)
+  • User Interaction Design
+  • Software Engineering with Group Project
+  • Web Technologies & Security
+  • Research & Consultancy Skills
+  • MSc Project phases: Literature Review and Final Project
+- Languages & Tools: Python, R, Matlab, XML
+- Learning Outcomes:
+  • Understand and apply AI techniques (image/speech/data mining/social media analytics)
+  • Design, build, deploy, evaluate AI systems and secure web applications
+
+5. Learning Experience & Support
+- Interactive online environment: multimedia lectures, peer collaboration, forum discussions
+- Dedicated Student Success Coordinator for guidance throughout
+- Evidence‑based teaching from research‑active academics (80 % rated world‑leading/internationally excellent in REF 2021)
+- Consistently high student satisfaction and employability (top‑10 student experience; 96 % graduate employability per HESA)
+
+6. Career Prospects & Industry Application
+- Prepares graduates for roles in AI‑driven sectors: automated customer service, image/speech processing, AI‑based analytics, intelligent systems in logistics/factories/online platforms
+- Course informed by industry collaboration (e.g. Knowledge Transfer Partnership with Bentley Motors)
