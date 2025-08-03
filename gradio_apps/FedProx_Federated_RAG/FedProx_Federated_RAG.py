@@ -170,6 +170,33 @@ custom_css = """
     border-radius: 12px;
     border: 1px solid #0ea5e9;
 }
+
+.init-status {
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem 0;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: 8px;
+    border-left: 4px solid #f59e0b;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #92400e;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
+}
+
+.init-status.complete {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    border-left-color: #10b981;
+    color: #065f46;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+}
+
+.init-status.error {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    border-left-color: #ef4444;
+    color: #991b1b;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
+}
 """
 
 class FedProxServer:
@@ -625,10 +652,13 @@ def chunk_documents(docs: List[Document], chunk_size: int, chunk_overlap: int) -
 def initialize_and_train_fedprox_system(api_key: str, embeddings_model: str, llm_model: str, 
                                       temperature: float, k_docs: int, chunk_size: int, 
                                       chunk_overlap: int, training_rounds: int, mu: float,
-                                      hull_file_path: str, keele_file_path: str,
                                       progress=gr.Progress()):
     """Combined function to initialize and train the FedProx system"""
     global federated_nodes, federated_server, initialized, training_history
+    
+    # Use hardcoded file paths for data files
+    hull_file_path = "data/hull.txt"
+    keele_file_path = "data/keele.txt"
     
     # Try to get API key from environment first (for Hugging Face Spaces)
     env_api_key = os.environ.get("OPENAI_API_KEY", "")
@@ -636,10 +666,10 @@ def initialize_and_train_fedprox_system(api_key: str, embeddings_model: str, llm
         api_key = env_api_key
         print("✅ Using OpenAI API key from environment (Hugging Face secret)")
     elif not api_key.strip():
-        return "❌ Please provide your OpenAI API key or set OPENAI_API_KEY environment variable", "", ""
+        return "❌ Please provide your OpenAI API key or set OPENAI_API_KEY environment variable", "", "❌ **Error!** API key required."
     
     try:
-        progress(0.05, desc="🚀 Starting FedProx System...")
+        progress(0.05, desc="🚀 Initializing FedProx System...")
         
         # Set OpenAI API key
         os.environ["OPENAI_API_KEY"] = api_key.strip()
@@ -647,7 +677,7 @@ def initialize_and_train_fedprox_system(api_key: str, embeddings_model: str, llm
         # Initialize FedProx server with mu parameter
         federated_server = FedProxServer(mu=mu)
         
-        progress(0.1, desc="🔧 Testing OpenAI connection...")
+        progress(0.1, desc="🔧 Connecting to OpenAI Embeddings API...")
         # Initialize and test OpenAI embeddings
         try:
             embeddings = OpenAIEmbeddings(model=embeddings_model)
@@ -657,7 +687,7 @@ def initialize_and_train_fedprox_system(api_key: str, embeddings_model: str, llm
         except Exception as e:
             return f"❌ OpenAI Embeddings Error: {str(e)}. Please check your API key.", "", ""
         
-        progress(0.15, desc="🤖 Testing OpenAI LLM...")
+        progress(0.15, desc="🤖 Connecting to OpenAI Language Model...")
         # Initialize and test OpenAI LLM
         try:
             llm = ChatOpenAI(temperature=temperature, model_name=llm_model)
@@ -667,12 +697,12 @@ def initialize_and_train_fedprox_system(api_key: str, embeddings_model: str, llm
         except Exception as e:
             return f"❌ OpenAI LLM Error: {str(e)}. Please check your API key and model access.", "", ""
         
-        progress(0.2, desc="Creating federated nodes...")
+        progress(0.2, desc="🏛️ Creating federated university nodes...")
         federated_nodes = {}
         total_chunks = 0
         
         # Load and process Hull documents
-        progress(0.25, desc="Processing Hull University data...")
+        progress(0.25, desc="📚 Loading Hull University MSc AI programme data...")
         hull_docs = load_data(hull_file_path)
         if hull_docs:
             hull_chunks = chunk_documents(hull_docs, chunk_size, chunk_overlap)
@@ -702,7 +732,7 @@ def initialize_and_train_fedprox_system(api_key: str, embeddings_model: str, llm
             total_chunks += len(hull_chunks)
         
         # Load and process Keele documents
-        progress(0.35, desc="📚 Processing Keele University data...")
+        progress(0.35, desc="📚 Loading Keele University MSc AI programme data...")
         keele_docs = load_data(keele_file_path)
         if keele_docs:
             keele_chunks = chunk_documents(keele_docs, chunk_size, chunk_overlap)
@@ -731,19 +761,19 @@ def initialize_and_train_fedprox_system(api_key: str, embeddings_model: str, llm
             federated_server.register_node("Keele", keele_node)
             total_chunks += len(keele_chunks)
         
-        progress(0.45, desc="Federated system initialized!")
+        progress(0.45, desc="✅ Federated university nodes initialized!")
         initialized = True
         
         # Now start FedProx training
-        progress(0.5, desc="Starting FedProx collaborative training...")
+        progress(0.5, desc="🔄 Starting FedProx collaborative training with proximal regularization...")
         
         # Run FedProx training
         training_result = federated_server.fedprox_training(training_rounds)
         
-        progress(0.8, desc="Processing training improvements...")
+        progress(0.8, desc="📊 Processing training improvements and regularization effects...")
         
         # Format comprehensive results
-        result_text = f"**OpenAI FedProx System Ready!**\n\n"
+        result_text = f"**🎓 MSc AI Programme Comparison System Ready!**\n\n"
         
         # System info
         result_text += f"**Federated Network:**\n"
@@ -778,13 +808,13 @@ def initialize_and_train_fedprox_system(api_key: str, embeddings_model: str, llm
         
         training_history.append(training_result)
         
-        progress(1.0, desc="System ready!")
+        progress(1.0, desc="🎉 System ready! You can now ask questions about MSc AI programmes!")
         
-        return result_text, "", ""
+        return result_text, "", "✅ **Complete!** System is ready for queries."
         
     except Exception as e:
         progress(1.0, desc="❌ Setup failed")
-        return f"❌ Error setting up system: {str(e)}", "", ""
+        return f"❌ Error setting up system: {str(e)}", "", "❌ **Failed!** Setup encountered an error."
 
 def federated_query(question: str, progress=gr.Progress()):
     """Process a question through the OpenAI FedProx system"""
@@ -1011,15 +1041,13 @@ def create_fedprox_interface():
         gr.HTML("""
         <div class="main-header">
             <h1 class="main-title">🔗 FedProx Federated RAG</h1>
-            <p class="sub-title">Ask Questions about MSc AI online programmes at Hull or Keele University</p>
-            <div class="openai-indicator">Powered by OpenAI + FedProx Algorithm</div>
+            <p class="sub-title">Ask questions about MSc AI online programmes at Hull or Keele University</p>
         </div>
         """)
         
         # Main initialization section
         with gr.Row():
             with gr.Column():
-                                
                 # Settings in a compact layout
                 with gr.Row():
                     with gr.Column(scale=2):
@@ -1067,19 +1095,6 @@ def create_fedprox_interface():
                         chunk_size = gr.Slider(200, 2000, 800, step=100, label="Chunk Size")
                         chunk_overlap = gr.Slider(0, 500, 100, step=50, label="Chunk Overlap")
                 
-                # File inputs
-                with gr.Row():
-                    hull_file = gr.File(
-                        label="📄 Hull University Data",
-                        file_types=[".txt"],
-                        value="data/hull.txt" if os.path.exists("data/hull.txt") else None
-                    )
-                    keele_file = gr.File(
-                        label="📄 Keele University Data", 
-                        file_types=[".txt"],
-                        value="data/keele.txt" if os.path.exists("data/keele.txt") else None
-                    )
-                
                 # Main action button
                 init_button = gr.Button(
                     "🚀 Initialize & Train FedProx System",
@@ -1087,21 +1102,14 @@ def create_fedprox_interface():
                     size="lg",
                     elem_id="main-action-button"
                 )
-        
-        # Results section
-        with gr.Row():
-            with gr.Column():
-                # Check if running in Hugging Face Space environment
-                env_api_key = os.environ.get("OPENAI_API_KEY", "")
-                if env_api_key:
-                    status_message = "**System Status:** Ready for Hugging Face Space\n\nAPI key loaded from environment. Data files ready. Click the button above to initialize FedProx system."
-                else:
-                    status_message = "**System Status:** Not initialized\n\nPlease provide your OpenAI API key and click the button above to start."
                 
-                system_status = gr.Markdown(
-                    status_message,
-                    elem_classes=["status-box"]
+                # Status display for initialization process
+                init_status = gr.Markdown(
+                    "",
+                    elem_classes=["init-status"],
+                    visible=True
                 )
+        
         
         # Chat section
         gr.HTML("""
@@ -1145,13 +1153,18 @@ def create_fedprox_interface():
         
         # Event handlers
         init_button.click(
+            fn=lambda *args: ("", "", "🔄 **Initializing and training...** Please wait while we set up the system."),
+            inputs=[],
+            outputs=[details_output, chat_output, init_status],
+            show_progress=False,
+            queue=False
+        ).then(
             fn=initialize_and_train_fedprox_system,
             inputs=[
                 api_key_input, embeddings_model, llm_model, temperature, 
-                k_docs, chunk_size, chunk_overlap, training_rounds, mu_input,
-                hull_file, keele_file
+                k_docs, chunk_size, chunk_overlap, training_rounds, mu_input
             ],
-            outputs=[system_status, details_output, chat_output],
+            outputs=[details_output, chat_output, init_status],
             show_progress=True
         )
         
