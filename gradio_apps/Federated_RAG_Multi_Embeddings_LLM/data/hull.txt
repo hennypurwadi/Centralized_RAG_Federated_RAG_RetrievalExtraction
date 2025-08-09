@@ -1,0 +1,83 @@
+
+University of Hull – MSc in Artificial Intelligence (Online) Knowledge Base
+============================================================================
+
+Programme Overview
+------------------
+- Mode & Duration: Fully online, part-time over two years, designed for working professionals.
+- Start Dates & Fees:
+  - Starts: January, May, September (next cohort starts 22 Sep 2025; deadline: 12 Sep 2025).
+  - Fee total: £8,950, plus a £350 acceptance fee (included in total), with payment via instalments.
+  - VAT or GST may apply depending on student residence.
+- Study Load: Approximately 20 hours per week.
+
+What You’ll Learn
+-----------------
+- Core Technical Skills:
+  - Master Python AI libraries, algorithm implementation.
+  - Apply machine learning, deep learning, business analytics, and data visualisation.
+- Ethics, Governance & Society:
+  - Address fairness, bias, legal standards, misinformation, and emerging AI laws.
+- Business & Communication Skills:
+  - Develop communication for technical and non-technical audiences, teamwork, stakeholder engagement.
+- Research & Consultancy Skills:
+  - Research and consultancy projects solving real-world problems across domains (healthcare, legal, climate, etc.).
+
+Course Modules & Structure (180 Credits)
+----------------------------------------
+1. Artificial Intelligence Foundations (30 credits) – AI concepts, Python, software principles.
+2. Machine Learning & Deep Learning (30 credits) – Algorithms, supervised/unsupervised ML, neural networks.
+3. Ethical, Regulatory & Social Aspects for Fair AI (30 credits) – Legal, ethical, and social frameworks.
+4. Applied Artificial Intelligence (30 credits) – Business-focused AI integration, HCI, communication, misinformation.
+5. Research/Consultancy Project (60 credits) – Capstone project tied to workplace or real-world challenge.
+
+Assessment & Feedback
+---------------------
+- Coursework-only, 100% online (no exams).
+- Methods include coding assignments, essays, research reports, presentations, peer/self-reflection, and tutor feedback.
+
+Entry Requirements
+------------------
+- UK Honours degree (minimum 2:2) in STEM or relevant field with maths/stats/computing element.
+- Equivalent professional experience (including coding) considered.
+- English Language: IELTS 6.0 overall (no skill below 5.5) or equivalent.
+
+Funding & Payment Plans
+-----------------------
+- Tuition Fee: £8,950 total (includes £350 acceptance fee).
+- Payment Options: Full payment upfront or instalments (typically six payments).
+- Funding: UK postgraduate loans, bursaries (~£400), referral discounts.
+- Additional Costs: Some textbooks not covered by library subscriptions.
+
+Career Prospects & Support
+---------------------------
+- High-demand roles: AI Researcher, ML/DL Engineer, Data Scientist, NLP Specialist, Python Developer, Robotics Engineer, UX Software Engineer.
+- Job Growth: Computer occupations projected to grow 11.7% (2023–33).
+- Salary Premium: AI-skilled professionals earn ~17.7% more globally, up to 25% in some markets; UK average premium is 14%.
+- Career Preparation: Capstone project builds portfolio; access to Hull’s Careers & Employability service and global alumni network.
+
+Teaching Team
+-------------
+- Dr Rameez Kureshi (Programme Director): AI, Data Science, IoT for sustainability; numerous conference papers (ACM IoT, IEEE WF-IoT).
+- Prof Adil Khan: ML/DL, 80+ publications (NeurIPS, IEEE TNNLS, IEEE TIP); award-winning educator.
+- Dr Bhupesh Mishra: Smart City AI, IoT optimisation; 25+ journal articles.
+- Khadija Fraz: Data Scientist specialising in ML/DL, supports students with career transitions.
+
+University Credentials
+----------------------
+- Part of the Turing University Network.
+- Hull Computer Science ranks joint 5th in the UK for research impact (80% rated “world-leading”).
+- Links with Microsoft, Sony, EA, ensuring industry relevance.
+- Emphasis on ethical, accountable AI development.
+
+Summary Table
+-------------
+| Area         | Highlights                                                   |
+|--------------|---------------------------------------------------------------|
+| Modules      | 5 compulsory (Foundations, ML/DL, Ethics, Applied AI, Capstone) |
+| Features     | Coursework-only, webinars, real-world projects               |
+| Fees         | £8,950 total, scholarships and instalments                   |
+| Entry        | STEM degree or equivalent experience; IELTS 6.0+             |
+| Career       | High-demand roles, salary premiums, global opportunities     |
+| Staff        | Research-active with industry portfolios                     |
+| Accreditations | Turing Network, strong research ranking, top tech partners  |
