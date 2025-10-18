@@ -3,7 +3,7 @@ import os
 import time
 import numpy as np
 from typing import List, Tuple, Dict, Any, Optional
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain.chains import RetrievalQA
@@ -33,7 +33,7 @@ Answer:""",
     input_variables=["context", "question"]
 )
 
-# Enhanced CSS for improved layout with FedProx branding
+# Minimal CSS for custom styling (compatible with Gradio Theme)
 custom_css = """
 .gradio-container {
     max-width: 850px !important;
@@ -45,10 +45,7 @@ custom_css = """
     text-align: center;
     margin-bottom: 1rem;
     padding: 1.5rem;
-    background: linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 100%); /* Blue gradient for FedProx */
     border-radius: 15px;
-    color: #0277bd; /* Blue for title text */
-    box-shadow: 0 8px 32px rgba(179, 229, 252, 0.4); /* Soft blue glow */
 }
 
 .main-title {
@@ -63,141 +60,66 @@ custom_css = """
     opacity: 0.9;
     margin-bottom: 0;
 }
-
-.big-button-container {
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-    padding: 2rem;
-    border-radius: 15px;
-    margin: 1rem 0;
-    border: 2px solid #0ea5e9;
-    text-align: center;
-}
-
-.openai-indicator {
-    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-weight: bold;
-    display: inline-block;
-    margin: 0.5rem 0;
-}
-
-.status-box {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    padding: 1.5rem;
-    border-radius: 12px;
-    margin: 1rem 0;
-    border-left: 4px solid #3b82f6;
-    min-height: 100px;
-}
-
-.federated-node {
-    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-    padding: 1rem;
-    border-radius: 8px;
-    margin: 0.5rem 0;
-    border-left: 4px solid #0ea5e9;
-}
-
-.confidence-score {
-    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-    padding: 0.5rem;
-    border-radius: 6px;
-    margin: 0.25rem 0;
-    border-left: 3px solid #3b82f6;
-    font-weight: bold;
-}
-
-.compact-settings {
-    background: linear-gradient(135deg, #fafafa 0%, #f4f4f5 100%);
-    padding: 1rem;
-    border-radius: 8px;
-    margin: 0.5rem 0;
-    border: 1px solid #d4d4d8;
-}
-
-.gr-button-primary {
-    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%) !important;
-    border: none !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-    padding: 12px 24px !important;
-    transition: all 0.3s ease !important;
-    color: white !important;
-}
-
-.gr-button-primary:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 8px 25px rgba(2, 132, 199, 0.4) !important;
-}
-
-.gr-button-secondary {
-    background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%) !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 8px !important;
-    font-weight: 500 !important;
-    padding: 10px 20px !important;
-    transition: all 0.3s ease !important;
-}
-
-.gr-button-secondary:hover {
-    transform: translateY(-2px) !important;
-    box-shadow: 0 8px 25px rgba(2, 132, 199, 0.4) !important;
-}
-
-#main-action-button {
-    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%) !important;
-    color: white !important;
-    border: none !important;
-    font-weight: bold !important;
-    font-size: 1.2rem !important;
-    border-radius: 12px !important;
-    padding: 20px 40px !important;
-    min-height: 60px !important;
-    box-shadow: 0 4px 20px rgba(2, 132, 199, 0.3) !important;
-}
-
-#main-action-button:hover {
-    transform: translateY(-3px) !important;
-    box-shadow: 0 8px 30px rgba(2, 132, 199, 0.5) !important;
-}
-
-.chat-section {
-    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid #0ea5e9;
-}
-
-.init-status {
-    text-align: center;
-    padding: 1rem;
-    margin: 1rem 0;
-    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-    border-radius: 8px;
-    border-left: 4px solid #f59e0b;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #92400e;
-    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
-}
-
-.init-status.complete {
-    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-    border-left-color: #10b981;
-    color: #065f46;
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
-}
-
-.init-status.error {
-    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-    border-left-color: #ef4444;
-    color: #991b1b;
-    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
-}
 """
+
+# Create Gradio Theme with Light/Dark Mode Support
+def create_fedprox_theme():
+    """
+    Create custom Gradio theme with automatic light/dark mode support
+    This theme adapts to system preferences automatically
+    """
+    theme = gr.themes.Soft(
+        primary_hue="blue",
+        secondary_hue="cyan",
+        neutral_hue="slate",
+        font=gr.themes.GoogleFont("Inter"),
+    ).set(
+        # Background colors - adapts automatically to light/dark mode
+        body_background_fill="*neutral_50",
+        body_background_fill_dark="*neutral_900",
+        
+        # Block/component backgrounds
+        block_background_fill="*primary_50",
+        block_background_fill_dark="*primary_900",
+        block_border_color="*primary_200",
+        block_border_color_dark="*primary_700",
+        
+        # Text colors - high contrast for readability
+        body_text_color="*neutral_800",
+        body_text_color_dark="*neutral_100",
+        block_label_text_color="*neutral_700",
+        block_label_text_color_dark="*neutral_200",
+        
+        # Input fields
+        input_background_fill="*neutral_50",
+        input_background_fill_dark="*neutral_800",
+        input_border_color="*primary_300",
+        input_border_color_dark="*primary_600",
+        
+        # Buttons - primary
+        button_primary_background_fill="*primary_500",
+        button_primary_background_fill_dark="*primary_600",
+        button_primary_background_fill_hover="*primary_600",
+        button_primary_background_fill_hover_dark="*primary_500",
+        button_primary_text_color="white",
+        button_primary_text_color_dark="white",
+        button_primary_border_color="*primary_500",
+        button_primary_border_color_dark="*primary_600",
+        
+        # Buttons - secondary
+        button_secondary_background_fill="*primary_100",
+        button_secondary_background_fill_dark="*primary_800",
+        button_secondary_background_fill_hover="*primary_200",
+        button_secondary_background_fill_hover_dark="*primary_700",
+        button_secondary_text_color="*primary_700",
+        button_secondary_text_color_dark="*primary_100",
+        
+        # Shadows
+        shadow_drop="0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
+        shadow_drop_lg="0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+    )
+    
+    return theme
 
 class FedProxServer:
     """FedProx server implementation for OpenAI-based federated learning"""
@@ -1035,7 +957,10 @@ def get_federated_example_question():
 def create_fedprox_interface():
     """Create the main Gradio interface for FedProx system"""
     
-    with gr.Blocks(css=custom_css, title="FedProx Federated RAG System") as demo:
+    # Create theme with automatic light/dark mode support
+    fedprox_theme = create_fedprox_theme()
+    
+    with gr.Blocks(theme=fedprox_theme, css=custom_css, title="FedProx Federated RAG System") as demo:
         
         # Header
         gr.HTML("""
@@ -1112,11 +1037,9 @@ def create_fedprox_interface():
         
         
         # Chat section
-        gr.HTML("""
-        <div style="margin: 2rem 0 1rem 0;">
-            <h2 style="color: #0ea5e9; margin-bottom: 0.5rem;">💬 FedProx Query Interface</h2>
-            <p style="color: #64748b;">Ask questions and get regularized responses from federated institutions</p>
-        </div>
+        gr.Markdown("""
+        ## 💬 FedProx Query Interface
+        Ask questions and get regularized responses from federated institutions
         """)
         
         with gr.Row():
@@ -1137,8 +1060,7 @@ def create_fedprox_interface():
         with gr.Row():
             with gr.Column():
                 answer_output = gr.Markdown(
-                    label="FedProx Enhanced Answer",
-                    elem_classes=["chat-section"]
+                    label="FedProx Enhanced Answer"
                 )
         
         with gr.Row():
@@ -1193,14 +1115,11 @@ def create_fedprox_interface():
         )
         
         # Footer
-        gr.HTML("""
-        <div style="text-align: center; margin-top: 2rem; padding: 1rem; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); border-radius: 8px;">
-            <p style="color: #64748b; margin: 0;">
-                <strong>FedProx Federated RAG System</strong> | 
-                Advanced federated learning with proximal regularization | 
-                Powered by OpenAI
-            </p>
-        </div>
+        gr.Markdown("""
+        ---
+        **FedProx Federated RAG System** | Advanced federated learning with proximal regularization | Powered by OpenAI
+        
+        *Theme automatically adapts to system's light/dark mode preference* 
         """)
     
     return demo
