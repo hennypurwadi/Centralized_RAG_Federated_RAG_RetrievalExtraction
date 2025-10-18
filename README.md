@@ -4,7 +4,7 @@
 [![CENTRALIZED RAG CHATBOT](https://img.shields.io/badge/Interact_with-CENTRALIZED_RAG_CHATBOT-blue?style=for-the-badge)](https://huggingface.co/spaces/RinInori/RAG_with_MergerRetriever_Multi_Embeddings_LLM)
 
 ## 2. Click below to interact with the FEDERATED RAG CHATBOT about the MSc AI online program at the University of Hull.
-[![FEDERATED RAG CHATBOT](https://img.shields.io/badge/Interact_with-FEDERATED_RAG_CHATBOT-blue?style=for-the-badge)](https://huggingface.co/spaces/RinInori/Federated_RAG_Multi_Embeddings_LLM)
+[![FEDERATED RAG CHATBOT](https://img.shields.io/badge/Interact_with-FEDERATED_RAG_CHATBOT-blue?style=for-the-badge)](https://huggingface.co/spaces/RinInori/FedProx_Federated_RAG)
 
 ## 3. Click below to interact with the Retrieval-Based Methods with Embeddings and Cosine Similarity (Without Generation) about the MSc AI online program at the University of Hull.
 [![Retrieval-Based Chatbot](https://img.shields.io/badge/Interact_with-Retrieval_Based_Chatbot-blue?style=for-the-badge)](https://huggingface.co/spaces/RinInori/Retrieval_Based_Chatbot_Hull_Keele)
