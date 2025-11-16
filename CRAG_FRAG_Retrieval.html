@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Comparison - MSc AI Research</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
+    <style>
+        :root {
+            /* AI Theme Colors from enhanced version */
+            --primary-cyan: #00f5ff;
+            --secondary-cyan: #0080ff;
+            --accent-blue: #1e3a8a;
+            --neural-purple: #8b5cf6;
+            --tech-orange: #ff6b35;
+            --dark-bg: #0a0a0f;
+            --darker-bg: #050508;
+            --card-bg: rgba(15, 15, 25, 0.9);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --text-light: #ffffff;
+            --text-muted: #a1a1aa;
+            --gradient-primary: linear-gradient(135deg, var(--primary-cyan), var(--secondary-cyan));
+            --gradient-neural: linear-gradient(135deg, var(--neural-purple), var(--primary-cyan));
+            --gradient-tech: linear-gradient(135deg, var(--tech-orange), var(--neural-purple));
+            --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --glow-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--darker-bg);
+            color: var(--text-light);
+            line-height: 1.4;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(10, 10, 15, 0.9), rgba(30, 58, 138, 0.3)),
+                        url('') center/cover no-repeat;
+            padding: 3rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -5rem;
+            left: 0;
+            right: 0;
+            height: 6rem;
+            background-color: var(--darker-bg);
+            border-radius: 100% 100% 0 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            text-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .chatbots-container {
+            margin-top: -4rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .chatbot-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 300px;
+            flex-shrink: 0;
+        }
+
+        .chatbot-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 40px 80px -12px rgba(0, 0, 0, 0.6);
+            border-color: var(--primary-cyan);
+        }
+
+         .survey-link {
+            margin-top: 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid rgba(0, 245, 255, 0.2);
+            box-shadow: var(--glow-shadow);
+        }
+        
+        .survey-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--gradient-primary);
+            color: var(--darker-bg);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+        }
+        
+        .survey-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 30px 60px -12px rgba(0, 245, 255, 0.4);
+        }
+
+        .card-image {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(10, 10, 15, 0.3) 0%, rgba(10, 10, 15, 0.7) 100%);
+        }
+
+        .centralized-bg {
+            background: var(--gradient-primary),
+                        url('') center/cover;
+        }
+
+        .retrieval-bg {
+            background: var(--gradient-tech),
+                        url('') center/cover;
+        }
+
+        .federated-bg {
+            background: var(--gradient-neural),
+                        url('') center/cover;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--text-light);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        .retrieval-icon {
+            color: var(--text-light);
+        }
+
+        .federated-icon {
+            color: var(--text-light);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: var(--glow-shadow);
+            z-index: 3;
+        }
+
+        .chatbot-card:nth-child(1) .card-badge {
+            background: var(--gradient-primary);
+            color: var(--darker-bg);
+        }
+        
+        .chatbot-card:nth-child(2) .card-badge {
+            background: var(--gradient-neural);
+            color: var(--text-light);
+        }
+
+        .chatbot-card:nth-child(3) .card-badge {
+            background: var(--gradient-tech);
+            color: var(--text-light);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .card-subtitle {
+            font-size: 0.9rem;
+            color: var(--primary-cyan);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-description {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            flex-grow: 1;
+        }
+
+        .card-button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            width: 100%;
+        }
+
+        .centralized-btn {
+            background: var(--gradient-primary);
+            color: var(--darker-bg);
+        }
+
+        .centralized-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -12px rgba(0, 245, 255, 0.4);
+        }
+
+        .retrieval-btn {
+            background: var(--gradient-tech);
+            color: var(--text-light);
+        }
+
+        .retrieval-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -12px rgba(255, 107, 53, 0.4);
+        }
+
+        .federated-btn {
+            background: var(--gradient-neural);
+            color: var(--text-light);
+        }
+
+        .federated-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -12px rgba(139, 92, 246, 0.4);
+        }
+
+        footer {
+            background: linear-gradient(135deg, rgba(10, 10, 15, 0.9), rgba(30, 58, 138, 0.3)),
+                        url('') center/cover no-repeat;
+            color: var(--text-light);
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            border-top: 1px solid rgba(0, 245, 255, 0.2);
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 15, 0.8);
+        }
+
+        .footer-text {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 1000px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .chatbots-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .chatbot-card {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                padding: 2rem 0 4rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .chatbots-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .chatbot-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero {
+                padding: 2rem 0 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Evaluating and Comparing Chatbots</h1>
+                <p class="subtitle">Exploring Relevance, Coherence, Ambiguity Handling, and User Satisfaction of Different Question-Answering Approaches for the MSc AI Online Program</p>
+                <div class="survey-link">
+                    <p style="color: #00f5ff; font-weight: 600;">After interacting with the Chatbots, please rate the following SURVEY:</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe_yUaOTbiNt3oRp6NP95zOkU7KR0tuSV9Wy7k5TVmzp_JqAw/viewform?usp=dialog" target="_blank" class="survey-button">
+                        Take the Survey <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://github.com/hennypurwadi/Centralized_RAG_Federated_RAG_RetrievalExtraction/tree/main/Notebook" target="_blank" class="survey-button" style="background: var(--gradient-tech); margin-left: 1rem;">
+                        View Code <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="chatbots-container">
+            <div class="chatbot-card">
+                <div class="card-image centralized-bg">
+                    <i class="fas fa-robot card-icon"></i>
+                    <div class="card-badge">1</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Centralized RAG</h3>
+                    <p class="card-subtitle">Retrieval-Augmented Generation</p>
+                    <p class="card-description">
+                        Uses centralized approach to retrieve MSc AI program information and generates natural responses with advanced AI. 
+                    </p>
+                    <a href="https://huggingface.co/spaces/RinInori/RAG_with_MergerRetriever_Multi_Embeddings_LLM" target="_blank" class="card-button centralized-btn">
+                        Try Centralized RAG <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="chatbot-card">
+                <div class="card-image federated-bg">
+                    <i class="fas fa-network-wired card-icon federated-icon"></i>
+                    <div class="card-badge">2</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Federated RAG</h3>
+                    <p class="card-subtitle">Multi-Source Retrieval & Generation</p>
+                    <p class="card-description">
+                        Uses federated approach across distributed data sources, keeping data in original locations with local processing. 
+                    </p>
+                    <a href="https://huggingface.co/spaces/RinInori/FedProx_Federated_RAG" target="_blank" class="card-button federated-btn">
+                        Try Federated RAG <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="chatbot-card">
+                <div class="card-image retrieval-bg">
+                    <i class="fas fa-search card-icon retrieval-icon"></i>
+                    <div class="card-badge">3</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Retrieval-Based</h3>
+                    <p class="card-subtitle">Embeddings with Cosine Similarity</p>
+                    <p class="card-description">
+                        Uses embeddings and cosine similarity to retrieve relevant information without generating new text. 
+                    </p>
+                    <a href="https://huggingface.co/spaces/RinInori/Retrieval_Based_Chatbot_Hull_Keele" target="_blank" class="card-button retrieval-btn">
+                        Try Retrieval-Based <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p class="footer-text">© 2025 Project | MSc Artificial Intelligence Program | Student Number:202370140 </p>
+        </div>
+    </footer>
+</body>
+</html>
+
